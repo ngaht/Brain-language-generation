@@ -69,20 +69,6 @@ python main.py -task_name Huth_1 -cuda 0 -load_check_point False -model_name gpt
 python evaluate.py -dir Huth_1
 ``` 
 
-### Installation
-
-This repo is developed with [PyTorch](https://pytorch.org/get-started/locally/). It can be installed manually according to the requirement of platform-specific custom configuration. The recommended commands for installation are:
-```bash
-# XX.X is a placeholder for cudatoolkit version. It should be specified according to your environment
-conda install pytorch torchvision torchaudio cudatoolkit=XX.X -c pytorch 
-```
-In our experiment, we use torch verison 2.0.1 and cuda verison 11.7.
-In addition to PyTorch, we adopt several publicly available packages, which can be installed by
-```bash
-pip install -r requirements.txt
-```
-Note: Llama-7b may produce NaNs during half-precision training. If you encounter this issue, you can refer to this: [https://github.com/huggingface/transformers/issues/25065](https://github.com/huggingface/transformers/issues/25065).
-
 ### Model Training
 To train the model, you need to special the parameter *-mode* as *training* (only training) or *all* (training and evaluation).
 You can specify several hyper parameters according to your requirement, the default parameters for Pereira's dataset, Huth's dataset, and Narratives dataset are provided in *language_generation/scripts/example.sh*, *language_generation/scripts/huth.sh*, and *language_generation/scripts/narratives.sh*, respectively.
@@ -170,4 +156,29 @@ If you find our work helpful, please consider citing us:
   journal={arXiv preprint arXiv:2311.09889},
   year={2023}
 }
+```
+
+### Installation
+
+This repo is developed with [PyTorch](https://pytorch.org/get-started/locally/). It can be installed manually according to the requirement of platform-specific custom configuration. The recommended commands for installation are:
+```bash
+# XX.X is a placeholder for cudatoolkit version. It should be specified according to your environment
+conda install pytorch torchvision torchaudio cudatoolkit=XX.X -c pytorch 
+```
+In our experiment, we use torch verison 2.0.1 and cuda verison 11.7.
+In addition to PyTorch, we adopt several publicly available packages, which can be installed by
+```bash
+pip install -r requirements.txt
+```
+Note: Llama-7b may produce NaNs during half-precision training. If you encounter this issue, you can refer to this: [https://github.com/huggingface/transformers/issues/25065](https://github.com/huggingface/transformers/issues/25065).
+
+
+You can also create the project environment directly from the provided Conda file:
+```bash
+conda env create -f environment.yml
+conda activate BrainLLM
+```
+If the environment already exists, update it with:
+```bash
+conda env update -f environment.yml --prune
 ```

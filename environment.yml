@@ -1,0 +1,10 @@
+name: BrainLLM
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      - -r requirements.txt
+      - --extra-index-url https://download.pytorch.org/whl/cpu
+      - torch
